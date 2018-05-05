@@ -239,6 +239,35 @@ function ePostaObstaja(email, callback) {
 // Registracija novega uporabnika
 streznik.post('/prijava', function(zahteva, odgovor) {
   var form = new formidable.IncomingForm();
+
+/*  
+  var pridobiPodatkeUporabnika = function(event) {
+        
+    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/prijava";
+    
+    xmlhttp.onreadystatechange = function() {
+      // this.status mora biti enak 200
+      var check=xmlhttp.status;
+      console.log(check);
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log("asassssssssaasd");
+	
+	//Pri JSON.parse vrze error!
+	
+        var uporabniki = JSON.parse(xmlhttp.responseText);
+        document.getElementById("stranke").innerHTML = uporabniki[0];
+        console.log(uporabniki);
+      }
+    };
+    
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  };
+
+  pridobiPodatkeUporabnika();
+*/
   
   form.parse(zahteva, function (napaka, polja, datoteke) {
       pb.run("INSERT INTO Customer (FirstName, LastName, Company, Address, City, State, Country, PostalCode, \
